@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "resolveJsonModule": true,
+    "strict": false,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
+    "noImplicitOverride": false,
+    "module": "commonjs",
+    "target": "es2019",
+    "jsx": "react",
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ]
+  },
+  "include": ["src"],
+  "exclude": [
+    "./node_modules",
+    "./public",
+  ],
+}
