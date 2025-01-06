@@ -5,12 +5,12 @@
  * the correct continuity of its entire oborder path
  */
 export class FacetBoundarySegment {
-    originalSegment;
-    neighbour;
-    reverseOrder
-    constructor(originalSegment: any, neighbour: any, reverseOrder: any) {
-        this.originalSegment = originalSegment;
-        this.neighbour = neighbour;
-        this.reverseOrder = reverseOrder;
-    }
+  originalSegment;
+  neighbour;
+  reverseOrder;
+  constructor(originalSegment: any, neighbour: any, reverseOrder: any) {
+    this.originalSegment = originalSegment;
+    this.neighbour = neighbour;
+    this.reverseOrder = reverseOrder;
+  }
 }
