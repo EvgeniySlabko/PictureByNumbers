@@ -7,7 +7,7 @@ export class KMeans {
   k: number;
   random: Random;
   currentIteration: number;
-  pointsPerCategory: any[];
+  pointsPerCategory: Vector[][];
   centroids: any[];
   currentDeltaDistanceDifference: number;
   points: Vector[];

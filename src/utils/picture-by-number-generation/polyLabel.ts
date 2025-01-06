@@ -8,15 +8,15 @@ class Cell {
   h: number;
   d: number;
   max: number;
-  polygon: any;
-  constructor(x: number, y: number, h: number, polygon: any) {
+  polygon: Point[][];
+  constructor(x: number, y: number, h: number, polygon: Point[][]) {
     this.x = x;
     this.y = y;
     this.h = h;
     this.d = pointToPolygonDist(x, y, polygon);
     this.max = this.d + this.h * Math.SQRT2;
   }
-  compareTo(other: any) {
+  compareTo(other: Cell) {
     return other.max - this.max;
   }
   getKey() {
@@ -110,7 +110,7 @@ export function pointToPolygonDist(x: number, y: number, polygon: Point[][]) {
   return (inside ? 1 : -1) * Math.sqrt(minDistSq);
 }
 
-function getSegDistSq(px: number, py: number, a: any, b: any) {
+function getSegDistSq(px: number, py: number, a: Point, b: Point) {
   let x = a.x;
   let y = a.y;
   let dx = b.x - x;

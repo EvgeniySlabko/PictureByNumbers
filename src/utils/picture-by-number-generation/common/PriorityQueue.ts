@@ -1,20 +1,20 @@
 import { Heap } from "./Heap";
 
 export class PriorityQueue {
-    heap: any;
+    heap: Heap;
     constructor() {
         this.heap = new Heap();
     }
-    enqueue(obj) {
+    enqueue(obj: any) {
         this.heap.add(obj);
     }
     peek() {
         return this.heap.peek();
     }
-    updatePriority(key) {
+    updatePriority(key: any) {
         this.heap.checkHeapRequirement(key);
     }
-    get(key) {
+    get(key: any) {
         return this.heap.at(key);
     }
     get size() {
@@ -26,13 +26,13 @@ export class PriorityQueue {
     dump() {
         this.heap.dump();
     }
-    contains(key) {
+    contains(key: any) {
         return this.heap.contains(key);
     }
-    removeWhere(predicate) {
+    removeWhere(predicate: (item: any) => boolean) {
         this.heap.removeWhere(predicate);
     }
-    foreach(func) {
+    foreach(func: Function) {
         this.heap.foreach(func);
     }
     clone() {

@@ -1,3 +1,4 @@
+import { FacetResult } from "../FacetCreator";
 import { OrientationEnum } from "./OrientationEnum";
 import { Point } from "./Point";
 
@@ -25,7 +26,7 @@ export class PathPoint extends Point {
     }
     return y;
   }
-  getNeighbour(facetResult: any) {
+  getNeighbour(facetResult: FacetResult) {
     switch (this.orientation) {
       case OrientationEnum.Left:
         if (this.x - 1 >= 0) {

@@ -161,7 +161,7 @@ export class FacetBorderSegmenter {
     skipOutsideBorders: boolean,
     width: number,
     height: number,
-  ): any[] {
+  ): PathPoint[] {
     if (newpath.length <= 5) {
       return newpath;
     }
@@ -190,7 +190,7 @@ export class FacetBorderSegmenter {
   }
 
   static isOutsideBorderPoint(
-    point: any,
+    point: PathPoint,
     width: number,
     height: number,
   ): boolean {
@@ -207,8 +207,8 @@ export class FacetBorderSegmenter {
    */
   static async matchSegmentsWithNeighbours(
     facetResult: FacetResult,
-    segmentsPerFacet: any[],
-    onUpdate: ((progress: number) => void) | null = null,
+    segmentsPerFacet: PathSegment[][],
+    onUpdate: ((progress: number) => void),
   ): Promise<void> {
     const MAX_DISTANCE = 4;
 
@@ -279,8 +279,8 @@ export class FacetBorderSegmenter {
   }
 
   private static areSegmentsMatching(
-    segment: any,
-    neighbourSegment: any,
+    segment: PathSegment,
+    neighbourSegment: PathSegment,
     maxDistance: number,
   ): boolean {
     const segStartPoint = segment.points[0];
@@ -300,7 +300,7 @@ export class FacetBorderSegmenter {
     return matchesStraight || matchesReverse;
   }
 
-  private static shouldReverse(segment: any, neighbourSegment: any): boolean {
+  private static shouldReverse(segment: PathSegment, neighbourSegment: PathSegment): boolean {
     const segStartPoint = segment.points[0];
     const segEndPoint = segment.points[segment.points.length - 1];
     const nSegStartPoint = neighbourSegment.points[0];

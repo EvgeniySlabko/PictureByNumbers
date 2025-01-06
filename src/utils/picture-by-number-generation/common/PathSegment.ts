@@ -3,8 +3,8 @@ import { Point } from "./Point";
 
 export class PathSegment {
   points: PathPoint[];
-  neighbour;
-  constructor(points: any, neighbour: any) {
+  neighbour: number;
+  constructor(points: PathPoint[], neighbour: number) {
     this.points = points;
     this.neighbour = neighbour;
   }

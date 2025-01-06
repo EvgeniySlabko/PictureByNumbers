@@ -1,12 +1,12 @@
 export class Vector {
-    values: any[]
+    values: number[]
     weight: number
-    public tag: any;
-    constructor(values: any, weight = 1) {
+    public tag: number[];
+    constructor(values: number[], weight = 1) {
         this.values = values;
         this.weight = weight;
     }
-    distanceTo(p: any) {
+    distanceTo(p: Vector) {
         let sumSquares = 0;
         for (let i = 0; i < this.values.length; i++) {
             sumSquares += (p.values[i] - this.values[i]) * (p.values[i] - this.values[i]);
@@ -16,7 +16,7 @@ export class Vector {
     /**
      *  Calculates the weighted average of the given points
      */
-    static average(pts: any[]) {
+    static average(pts: Vector[]) {
         if (pts.length === 0) {
             throw Error("Can't average 0 elements");
         }

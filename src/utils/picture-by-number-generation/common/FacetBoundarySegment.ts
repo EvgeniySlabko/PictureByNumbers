@@ -1,3 +1,5 @@
+import { PathSegment } from "./PathSegment";
+
 /**
  * Facet boundary segment describes the matched segment that is shared between 2 facets
  * When 2 segments are matched, one will be the original segment and the other one is removed
@@ -5,10 +7,10 @@
  * the correct continuity of its entire oborder path
  */
 export class FacetBoundarySegment {
-  originalSegment;
-  neighbour;
-  reverseOrder;
-  constructor(originalSegment: any, neighbour: any, reverseOrder: any) {
+  originalSegment: PathSegment;
+  neighbour: number;
+  reverseOrder: boolean;
+  constructor(originalSegment: PathSegment, neighbour: number, reverseOrder: boolean) {
     this.originalSegment = originalSegment;
     this.neighbour = neighbour;
     this.reverseOrder = reverseOrder;

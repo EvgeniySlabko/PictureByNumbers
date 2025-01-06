@@ -33,7 +33,7 @@ export function fillCore(
   width: number,
   height: number,
   visited: (x: number, y: number) => boolean,
-  setFill: any,
+  setFill: (x: number, y: number) => void,
 ) {
   // at this point, we know that array[y,x] is clear, and array[y-1,x] and array[y,x-1] are set.
   // we'll begin scanning down and to the right, attempting to fill an entire rectangular block

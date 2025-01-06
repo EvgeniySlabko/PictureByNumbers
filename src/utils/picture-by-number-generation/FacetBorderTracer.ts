@@ -3,6 +3,7 @@ import { delay } from "./common/delay";
 import { OrientationEnum } from "./common/OrientationEnum";
 import { PathPoint } from "./common/PathToPoint";
 import { Point } from "./common/Point";
+import { Facet } from "./Facet";
 import { FacetResult } from "./FacetCreator";
 
 export class FacetBorderTracer {
@@ -21,12 +22,12 @@ export class FacetBorderTracer {
     );
     // sort by biggest facets first
     const facetProcessingOrder = facetResult.facets
-      .filter((f: any) => f != null)
+      .filter((f: Facet) => f != null)
       .slice(0)
-      .sort((a: any, b: any) =>
+      .sort((a: Facet, b: Facet) =>
         b.pointCount > a.pointCount ? 1 : b.pointCount < a.pointCount ? -1 : 0,
       )
-      .map((f: any) => f.id);
+      .map((f: Facet) => f.id);
     for (let fidx = 0; fidx < facetProcessingOrder.length; fidx++) {
       const f = facetResult.facets[facetProcessingOrder[fidx]];
       if (f != null) {
@@ -115,17 +116,17 @@ export class FacetBorderTracer {
    * Returns a border path starting from the given point
    */
   static getPath(
-    pt: any,
-    facetResult: any,
-    f: any,
-    borderMask: any,
-    xWall: any,
-    yWall: any,
+    pt: PathPoint,
+    facetResult: FacetResult,
+    f: Facet,
+    borderMask: BooleanArray2D,
+    xWall: BooleanArray2D,
+    yWall: BooleanArray2D,
   ) {
     const debug = false;
     let finished = false;
     const count = 0;
-    const path: any = [];
+    const path: PathPoint[] = [];
     FacetBorderTracer.addPointToPath(path, pt, xWall, f, yWall);
     // check rotations first, then straight along the ouside and finally diagonally
     // this ensures that bends are always taken as tight as possible
@@ -653,11 +654,11 @@ export class FacetBorderTracer {
    * Add a point to the border path and ensure the correct xWall/yWalls is set
    */
   static addPointToPath(
-    path: any,
+    path: PathPoint[],
     pt: PathPoint,
-    xWall: any,
-    f: any,
-    yWall: any,
+    xWall: BooleanArray2D,
+    f: Facet,
+    yWall: BooleanArray2D,
   ) {
     path.push(pt);
     switch (pt.orientation) {
